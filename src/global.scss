@@ -24,3 +24,29 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+
+
+
+
+//toast styles
+.toast-bg {
+    color: #f6f6f6; /* Text color */
+    width: 55%; /* Adjust the width as needed */
+    position: fixed; /* Position the toast */
+    top: -5%; /* Align the toast to the bottom */
+    left: 50%; /* Align the toast to the center horizontally */
+    transform: translateX(-50%); /* Center the toast horizontally */
+    animation: slideUp 0.5s ease forwards;
+ 
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%) translateX(-50%); /* Start position below the screen */
+    }
+    to {
+      transform: translateY(0) translateX(-50%); /* End position at the desired distance from the bottom */
+    }
+  }
+}
+  
+  

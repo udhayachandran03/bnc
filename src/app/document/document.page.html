@@ -1,0 +1,123 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Document</ion-title>
+    <ion-button slot="end"  (click)="info()">info</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Full Screen Preview -->
+  <div *ngIf="licenceFullScreen" class="full-screen-preview">
+    <ion-icon name="close-circle-outline" class="close-icon" (click)="closeLicenceFullScreen()"></ion-icon>
+    <img [src]="licenceFilePreview" alt="Licence Full Screen Preview">
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-grid class="card-grid">
+        <ion-row>
+          <!-- Left Side (File Preview) -->
+          <ion-col size="6" class="left-col">
+            <div class="preview-container" (click)="viewLicenceFullScreen()">
+              <img *ngIf="licenceFile" [src]="licenceFilePreview" alt="Preview">
+            </div>
+          </ion-col>
+          <!-- Right Side (Add Document) -->
+          <ion-col size="6" class="right-col">
+            <div class="container">
+              <span class="text">Licence</span>
+              <!-- Plus Icon -->
+              <ion-fab class="add-fab" vertical="center" horizontal="end">
+                <ion-fab-button (click)="fileInput.click()" class="add-fab-button">
+                  <ion-icon name="add"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+              <!-- Hidden File Input -->
+              <input #fileInput type="file" (change)="onFileSelected($event)" accept=".jpg,.jpeg,.png" style="display: none;">
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+<!-- Full Screen Preview for RC -->
+
+ <div *ngIf="rcFullScreen" class="full-screen-preview">
+  <ion-icon name="close-circle-outline" class="close-icon" (click)="closeRCFullScreen()"></ion-icon>
+  <img [src]="rcFilePreview" alt="RC Full Screen Preview">
+</div>
+
+<ion-card>
+  <ion-card-content>
+    <ion-grid class="card-grid">
+      <ion-row> 
+        <!-- Left Side (RC File Preview) -->
+      <ion-col size="6" class="left-col">
+          <div class="preview-container" (click)="viewRCFullScreen()">
+            <img *ngIf="rcFile" [src]="rcFilePreview" alt="RC Preview">
+          </div>
+        </ion-col> 
+        <!-- Right Side (Add RC Document) -->
+      <ion-col size="6" class="right-col">
+          <div class="container">
+            <span class="text">RC</span> 
+            <!-- Plus Icon -->
+             <ion-fab class="add-fab" vertical="center" horizontal="end">
+              <ion-fab-button (click)="rcFileInput.click()" class="add-fab-button">
+                <ion-icon name="add"></ion-icon>
+              </ion-fab-button>
+            </ion-fab> 
+            <!-- Hidden RC File Input -->
+           <input #rcFileInput type="file" (change)="onRCFileSelected($event)" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card> 
+
+
+<!-- insurance-->
+
+<div *ngIf="insuranceFullScreen" class="full-screen-preview">
+  <ion-icon name="close-circle-outline" class="close-icon" (click)="closeinsuranceFullScreen()"></ion-icon>
+  <img [src]="insuranceFilePreview" alt="insurance Full Screen Preview">
+</div>
+
+
+<ion-card>
+  <ion-card-content>
+    <ion-grid class="card-grid">
+      <ion-row> 
+        <!-- Left Side (insurance File Preview) -->
+      <ion-col size="6" class="left-col">
+          <div class="preview-container" (click)="viewinsuranceFullScreen()">
+            <img *ngIf="insuranceFile" [src]="insuranceFilePreview" alt="insurance Preview">
+          </div>
+        </ion-col> 
+
+         <!-- Right Side (Add insurance Document) -->
+      <ion-col size="6" class="right-col">
+        <div class="container">
+          <span class="text">Insurance</span> 
+
+           <!-- Plus Icon -->
+           <ion-fab class="add-fab" vertical="center" horizontal="end">
+            <ion-fab-button (click)="insuranceFileInput.click()" class="add-fab-button">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+          </ion-fab> 
+
+             <!-- Hidden insurance File Input -->
+             <input #insuranceFileInput type="file" (change)="oninsuranceFileSelected($event)" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card> 
+
+
+  </ion-content>

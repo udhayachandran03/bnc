@@ -1,0 +1,177 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Info</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Licence field -->
+
+<ion-content>
+    <div *ngIf="licenceFullScreen" class="full-screen-preview">
+    <ion-icon name="close-circle-outline" class="close-icon" (click)="closeLicenceFullScreen()"></ion-icon>
+    <img [src]="licenceFilePreviews[currentImageIndex]" alt="Licence Full Screen Preview">
+ 
+
+  <!-- previous Image Button -->
+    <ion-icon *ngIf="licenceFilePreviews.length > 1 && currentImageIndex > 0" 
+      name="arrow-back" class="nav-icon prev" 
+      (click)="prevImage()"></ion-icon>
+      
+  <!-- Next Image Button -->
+  <ion-icon *ngIf="licenceFilePreviews.length > 1 && currentImageIndex < licenceFilePreviews.length - 1" 
+            name="arrow-forward" class="nav-icon next" 
+            (click)="nextImage()"></ion-icon>
+
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-grid class="card-grid">
+        <ion-row>
+
+<!--          
+          <ion-col size="6" class="left-col" *ngFor="let preview of licenceFilePreviews; let i = index">
+            <div class="preview-container" (click)="viewLicenceFullScreen(i)">
+              <img [src]="preview" alt="Preview">
+            </div>
+          </ion-col> -->
+          
+        
+        <!--for loop- methiod-->
+
+
+           <ion-col size="6" class="left-col" >
+            <div class="preview-container" *ngIf="licenceFilePreviews.length > 0"(click)="viewLicenceFullScreen(0)">
+              <img [src]="licenceFilePreviews[0]" alt="preview">
+            </div>
+          </ion-col>    
+          
+          
+        
+         
+
+          <ion-col size="6" class="right-col">
+            <div class="container">
+              <span class="text">Licence</span>
+      
+              <ion-fab class="add-fab" vertical="center" horizontal="end">
+                <ion-fab-button (click)="fileInput?.click()" class="add-fab-button">
+                  <ion-icon name="add"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+
+              <input #fileInput type="file" (change)="onFileSelected($event)" accept=".jpg,.jpeg,.png" multiple style="display: none;">
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+
+<!-- RC field  -->
+
+<div *ngIf="rcFullScreen" class="full-screen-preview">
+  <ion-icon name="close-circle-outline" class="close-icon" (click)="closeRCFullScreen()"></ion-icon>
+  <img [src]="rcFilePreviews[ImageIndex]" alt="RC Full Screen Preview">
+
+
+  <!-- previous Image Button -->
+  <ion-icon *ngIf="rcFilePreviews.length > 1 && ImageIndex > 0" 
+    name="arrow-back" class="nav-icon prev" 
+    (click)="prev()"></ion-icon>
+    
+<!-- Next Image Button -->
+<ion-icon *ngIf="rcFilePreviews.length > 1 && ImageIndex < rcFilePreviews.length - 1" 
+          name="arrow-forward" class="nav-icon next" 
+          (click)="next()"></ion-icon>
+
+</div>
+
+
+
+
+  <ion-card>
+    <ion-card-content>
+      <ion-grid class="card-grid">
+        <ion-row> 
+          <ion-col size="6" class="left-col">
+            <div class="preview-container" *ngIf="rcFilePreviews.length > 0" (click)="viewRCFullScreen(0)">
+              <img [src]="rcFilePreviews[0]" alt="Preview">
+            </div>
+          </ion-col>    
+          
+          <ion-col size="6" class="right-col">
+            <div class="container">
+              <span class="text">RC</span>
+              <!-- Add File Button -->
+              <ion-fab class="add-fab" vertical="center" horizontal="end">
+                <ion-fab-button (click)="rcFileInput?.click()" class="add-fab-button">
+                  <ion-icon name="add"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+              <!-- File Input -->
+              <input #rcFileInput type="file" (change)="onRCFileSelected($event)" accept=".jpg,.jpeg,.png" multiple style="display: none;">
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+  <!-- insurance filee -->
+
+  
+<div *ngIf="insuranceFullScreen" class="full-screen-preview">
+  <ion-icon name="close-circle-outline" class="close-icon" (click)="closeInsuranceFullScreen()"></ion-icon>
+  <img [src]="insuranceFilePreviews[Index]" alt="Insurance Full Screen Preview">
+
+
+  <!-- previous Image Button -->
+  <ion-icon *ngIf="insuranceFilePreviews.length > 1 && Index > 0" 
+    name="arrow-back" class="nav-icon prev" 
+    (click)="pre()"></ion-icon>
+    
+<!-- Next Image Button -->
+<ion-icon *ngIf="insuranceFilePreviews.length > 1 && Index < insuranceFilePreviews.length - 1" 
+          name="arrow-forward" class="nav-icon next" 
+          (click)="nxt()"></ion-icon>
+
+</div>
+
+
+
+
+  <ion-card>
+    <ion-card-content>
+      <ion-grid class="card-grid">
+        <ion-row> 
+          <ion-col size="6" class="left-col">
+            <div class="preview-container" *ngIf="insuranceFilePreviews.length > 0" (click)="viewInsuranceFullScreen(0)">
+              <img [src]="insuranceFilePreviews[0]" alt="Preview">
+            </div>
+          </ion-col>    
+          
+          <ion-col size="6" class="right-col">
+            <div class="container">
+              <span class="text">Insurance</span>
+              <!-- Add File Button -->
+              <ion-fab class="add-fab" vertical="center" horizontal="end">
+                <ion-fab-button (click)="insuranceFileInput?.click()" class="add-fab-button">
+                  <ion-icon name="add"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+              <!-- File Input -->
+              <input #insuranceFileInput type="file" (change)="onInsuranceFileSelected($event)" accept=".jpg,.jpeg,.png" multiple style="display: none;">
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>

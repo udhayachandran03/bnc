@@ -1,0 +1,28 @@
+.ion-content-custom {
+    --ion-background-color: rgb(31, 31, 129); /* Background color of ion-content */
+  }
+  
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set height to viewport height */
+  }
+  
+  .top-center {
+    width: 150px; /* Adjust width of the image */
+  }
+  
+  .centered-text {
+    text-align: center;
+    color: white; /* Color of the text */
+    margin-top: 20px; /* Adjust spacing between image and text */
+  }
+  
+  .centered-button {
+    width: 150px; /* Adjust button width */
+    margin-top: 20px; /* Adjust spacing between text and button */
+  }
+  

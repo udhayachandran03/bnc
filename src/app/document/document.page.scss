@@ -1,0 +1,51 @@
+.full-screen-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .full-screen-preview img {
+    max-width: 100%;
+    max-height:100%;
+
+    object-fit: cover;
+  }
+
+  .close-icon {
+    position: absolute;
+    margin-bottom: 165%;
+    right: 10px;
+    color: rgb(235, 0, 0);
+    font-size: 30px;
+  }
+  .preview-container {
+    width: 50px; /* Set the desired width */
+    // height: 50px; /* Set the desired height */
+     overflow: hidden;
+  }
+  
+  // .preview-container img {
+  //   width: 100%; /* Make sure the image fills the container */
+  //   height: 100%; /* Make sure the image fills the container */
+  //   object-fit: cover; /* Preserve aspect ratio */
+  // }
+  
+  .add-fab-button {
+    width: 45px; /* Set the desired width */
+    height: 45px; /* Set the desired height */
+    font-size: 100px; /* Adjust the font size of the icon */
+  }
+
+
+
+
+
+
+  
