@@ -191,6 +191,8 @@ export class MapPage implements OnInit {
     this.addMarkerCluster();
     this.addLinesBetweenMarkers();
     this.addGeofencedArea(); // Call function to add geofenced area
+    this.addAdditionalGeofencedArea();
+    this.addLineGeofence();
   }
 
   addMarkers() {
@@ -200,7 +202,9 @@ export class MapPage implements OnInit {
       { title: 'POLLACHI', lat: 10.641871, lng: 77.0145378, snippet: 'Pollachi is a town and a taluk headquarters in Tamil Nadu state, India. Located about 40 km (25 mi) to the south of Coimbatore' },
       { title: 'PALANI', lat: 10.4528409, lng: 77.4959245, snippet: 'Palani (Tamil: [paɻani], is a town and a taluk headquarters in Dindigul district of the western part of Tamil Nadu state in India.' },
       { title: 'TIRUPPUR', lat: 11.108571, lng: 77.281411, snippet: 'Tiruppur or Tirupur is a city in the Indian state of Tamil Nadu. It is located on the banks of the Noyyal river and is the fourth largest urban ' },
-      {title: 'BNC Motors', lat:10.939241178102202,lng: 76.97837798334106, snippet:'' },
+      { title: 'BNC Motors', lat:10.939241178102202,lng: 76.97837798334106, snippet:'To make sure that customers transition to clean energy 2-wheelers en masse, we design vehicles which are equal to or better than their ICE counterparts in every'},
+      { title:'Home Sweet Home', lat:10.783544492151865,lng:77.06660235615354,snippet:''},
+   
     ];
 
     locations.forEach((location) => {
@@ -258,15 +262,15 @@ export class MapPage implements OnInit {
   addLinesBetweenMarkers() {
     for (let i = 0; i < this.markers.length - 1; i++) {
       const lineCoordinates = [
-        { lat: 13.0474733, lng: 80.0441992 },    //chennai
+        { lat: 13.0474733, lng: 80.0441992 },    //chennai  
         //  { lat:61.99797200033277, lng:94.56108498872399},
         // { lat: 10.641871, lng: 77.0145378},
         // { lat:14.472042045246518 ,lng:108.11633065183597}, 
 
 
         // {lat: 11.00555, lng: 76.96612,},    //coimbatore  
-        { lat: 10.641871, lng: 77.0145378,}, //pollachi
-
+        {lat: 10.641871, lng: 77.0145378,}, //pollachi
+        
         {lat: 10.942760809879006,lng:76.97929098929872}, //sidco ,
 
         {lat: 10.942640336682834,lng: 76.97780733827231}, ///sidco first left 10.939241178102202,
@@ -292,6 +296,7 @@ export class MapPage implements OnInit {
       // console.log(this.addLinesBetweenMarkers)
     }
   }
+
   addGeofencedArea() {
     // Ensure that both this.map and google namespace are available
     if (!this.map || !google) {
@@ -322,4 +327,57 @@ export class MapPage implements OnInit {
       this.polygon = newPolygon; // Update the reference to the polygon
     }
   }
+
+
+  addAdditionalGeofencedArea() {
+    // Ensure that both this.map and google namespace are available
+    if (!this.map || !google) {
+      console.error('Map or Google Maps JavaScript API is not available.');
+      return;
+    }
+  
+    // Define the center and radius for the circle
+    const center = { lat:10.783544492151865, lng: 77.06660235615354 };
+    const radius = 5000; // Specify the radius in meters
+  
+    // Construct the circle
+    const circle = new google.maps.Circle({
+      strokeColor: 'black',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#00FF00',
+      fillOpacity: 0.35,
+      map: this.map,
+      center: center,
+      radius: radius,
+    });
+  
+    // Set the circle on the map
+    circle.setMap(this.map);
+  }
+    
+
+  addLineGeofence() {
+    if (!this.map || !google) {
+      console.error('Map or Google Maps JavaScript API is not available.');
+      return;
+    }
+  
+    // Define the coordinates for the line (start and end points)
+    const startPoint = { lat:11.2971584, lng:76.8514278 };
+    const endPoint = { lat:11.4217662, lng: 76.9239403 };
+  
+    // Create a polyline with the defined coordinates
+    const line = new google.maps.Polyline({
+      path: [startPoint, endPoint],
+      geodesic: true,
+      strokeColor: '#00FF00', // Choose a color for the line
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+  
+    // Set the line on the map
+    line.setMap(this.map);
+  }
+  
 }
